@@ -14,8 +14,50 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from django.conf.urls.static import static
+from django.conf import settings
+
+# import router
+from rest_framework.routers import DefaultRouter
+
+# import views
+from users.views import MyObtainTokenPairView, RegisterView
+from posts.views import PostAPIViewset, CommentAPIViewset, SubCommentAPIViewset
+from groups.views import GroupAPIViewset
+# token authentication over json
+from rest_framework_simplejwt.views import (
+    TokenObtainPairView,
+    TokenRefreshView,
+)
+
+# declare routers
+router = DefaultRouter()
+router.register(r'posts', PostAPIViewset, basename='Posts')
+router.register(r'groups', GroupAPIViewset, basename='Groups')
+router.register(r'comments', CommentAPIViewset, basename='Comments')
+router.register(r'subcomments', SubCommentAPIViewset, basename='SubComments')
+
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('accounts/', include('django.contrib.auth.urls')), # new
+    
+    # token needed for sessions
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    
+    # login rest api view
+    path('api/login/', MyObtainTokenPairView.as_view(), name='login_token_obtain_pair'),
+    path('api/login/refresh/', TokenRefreshView.as_view(), name='login_token_refresh'),
+    path('api/register/', RegisterView.as_view(), name='auth_register'),
+    
+    # include routers for post groups and comments
+    path('api/', include(router.urls)),
+    # path('upload/', MemeImageAPIViewset.as_view, name='upload'),
+
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
