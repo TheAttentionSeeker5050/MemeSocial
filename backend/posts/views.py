@@ -17,6 +17,8 @@ from .serializers import PostSerializer, CommentSerializer, SubCommentSerializer
 # import decorators
 from rest_framework.decorators import action
 
+# import pagination
+from rest_framework.pagination import PageNumberPagination, CursorPagination
 # Create your views here.
 
 
@@ -26,6 +28,7 @@ class PostAPIViewset(ModelViewSet):
     
     queryset = Post.objects.all()
     serializer_class = PostSerializer
+    # pagination_class = StandardResultsSetPagination
     
     @action(detail=True, methods=['post'])
     def upload_meme(request):

@@ -1,0 +1,57 @@
+:root {
+    --orange-brand: #fb8500;
+    --orange-brand-2: #fb5607;
+    
+}
+
+header {
+    display: grid;
+    grid-template-columns: auto  1fr;
+    background-color: var(--orange-brand-2);
+    color: white;
+    width: 100vw;
+    padding: 10px 0;
+}
+
+.header_left {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 5px;
+    justify-content: left;
+}
+
+.header_left--menu, .header_left--title {
+    margin: 15px;
+    align-self: center;
+}
+
+
+.header_left--title {
+    margin-left: 0;
+    font-size: 1.0rem;
+}
+
+.header_right {
+    display: grid;
+    grid-template-columns: auto auto;
+    
+}
+
+.header_right--search_icon {
+    justify-self: right;
+    margin: 15px;
+    align-self: center;
+    grid-column: 2;
+}
+
+#meme_search_input {
+    height: 1.4rem;
+    font-size: 1.2rem;
+    max-width: 130px;
+    align-self: center;
+    border: solid 0px;
+    border-bottom: solid 2px white;
+    background-color: transparent;
+    color: white;
+}
+

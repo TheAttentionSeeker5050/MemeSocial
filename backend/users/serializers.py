@@ -67,3 +67,11 @@ class RegisterSerializer(serializers.ModelSerializer):
 
         return user
 
+class GetUserSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = User
+        fields = ["pk", "username"]
+        read_only_fields = ["pk", "username"]
+        
+    

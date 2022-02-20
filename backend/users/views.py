@@ -30,9 +30,10 @@
 #     lookup_field = "username"
 #     lookup_url_kwarg = "user"
 
-from .serializers import MyTokenObtainPairSerializer, RegisterSerializer
+from .serializers import MyTokenObtainPairSerializer, RegisterSerializer, GetUserSerializer
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.views import TokenObtainPairView
+from rest_framework import viewsets
 
 
 class MyObtainTokenPairView(TokenObtainPairView):
@@ -47,4 +48,8 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     permission_classes = (AllowAny,)
     serializer_class = RegisterSerializer
+    
+class GetUserView(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = GetUserSerializer
     

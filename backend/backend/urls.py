@@ -23,7 +23,7 @@ from django.conf import settings
 from rest_framework.routers import DefaultRouter
 
 # import views
-from users.views import MyObtainTokenPairView, RegisterView
+from users.views import MyObtainTokenPairView, RegisterView, GetUserView
 from posts.views import PostAPIViewset, CommentAPIViewset, SubCommentAPIViewset
 from groups.views import GroupAPIViewset
 # token authentication over json
@@ -38,6 +38,8 @@ router.register(r'posts', PostAPIViewset, basename='Posts')
 router.register(r'groups', GroupAPIViewset, basename='Groups')
 router.register(r'comments', CommentAPIViewset, basename='Comments')
 router.register(r'subcomments', SubCommentAPIViewset, basename='SubComments')
+router.register(r'user', GetUserView, basename='User')
+
 
 
 
@@ -49,6 +51,7 @@ urlpatterns = [
     # token needed for sessions
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('api-auth/', include('rest_framework.urls')),
     
     # login rest api view
     path('api/login/', MyObtainTokenPairView.as_view(), name='login_token_obtain_pair'),

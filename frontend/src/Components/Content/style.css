@@ -1,0 +1,17 @@
+@import url("../../custom_properties.css");
+
+.feed_container {
+    width: 100vw;
+    margin-top: 10px;
+    border-top: 2px solid var(--orange-brand-2);
+
+}
+
+.top_feed_menu {
+    display:flex;
+    gap: 15px;
+    flex-direction: row;
+    justify-content:center;
+    font-size: 1.4rem;
+    color: var(--orange-brand);
+}
