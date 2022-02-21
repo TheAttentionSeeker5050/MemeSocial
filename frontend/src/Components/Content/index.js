@@ -18,8 +18,14 @@ class Content extends React.Component {
         this.state = {
             page:1,
             posts: [],
-            loading:false
+            loading:false,
+            // show_login_modal:false,
+            // show_register_modal:false,
+            // show_menu_modal: false
         }
+        // this.showLoginModal = this.showLoginModal.bind(this)
+        // this.hideLoginModal = this.hideLoginModal.bind(this)
+
 
         window.onscroll = debounce(() => {
             const {
@@ -32,6 +38,14 @@ class Content extends React.Component {
             }, 200);
         }
     
+    // showLoginModal() {
+    //     this.setState({show_login_modal: true})
+    // }
+
+    // hideLoginModal() {
+    //     this.setState({show_login_modal: false})
+    // }
+
     componentDidMount() {
         this.getPosts()
     }
@@ -67,9 +81,10 @@ class Content extends React.Component {
                     <span>Trending</span>
                     <span>Most Viewed</span>
                     <span>Recent</span>
-
-
                 </section>
+
+                
+
                 <section className="feed_container" style={{minHeight:"500px"}}>
                     {this.state.posts.map( post =>
                         <Post
