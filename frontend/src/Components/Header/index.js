@@ -23,7 +23,6 @@ class Header extends React.Component {
         console.log(this.state.searchBarActive)
     }
 
-    
 
     render() {
         return (
@@ -33,7 +32,7 @@ class Header extends React.Component {
                 <section className='header_left'>
                 
                     <img src="https://img.icons8.com/external-gradak-royyan-wijaya/25/ffffff/external-circle-basic-interface-iii-gradak-royyan-wijaya.png" alt='menu' className='header_left--menu'
-                    //onClick={this.showLoginModalHandler} //this is temporary
+                    onClick={this.props.showLogin} //this is temporary
                     />
                     <h1 className="header_left--title">ORANGE SODA </h1>
                     <img src="https://img.icons8.com/external-icongeek26-outline-icongeek26/50/ffffff/external-drink-retro-80s-icongeek26-outline-icongeek26.png"/>
