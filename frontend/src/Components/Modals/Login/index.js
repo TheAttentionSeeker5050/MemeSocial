@@ -23,7 +23,7 @@ class LoginModalComponent extends React.Component {
         <section className={showHideClassName}>   
             <div className="modal_main">
               
-              <form className="login_form" >
+              <form className="login_form">
                   <h2 className="form_title">Login</h2>
 
 
@@ -39,7 +39,7 @@ class LoginModalComponent extends React.Component {
                   onChange={this.props.onPasswordInput}
                   />
 
-                  <button type="submit" onClick={this.props.attemptLogin}>Submit</button>
+                  <button type="submit" onSubmit={this.props.submitFunction}>Submit</button>
               </form>
             </div>
 

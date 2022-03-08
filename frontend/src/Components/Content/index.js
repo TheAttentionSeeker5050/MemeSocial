@@ -53,7 +53,7 @@ class Content extends React.Component {
         // this.setState({ loading: true });
         axios
           .get(
-            `http://127.0.0.1:8000/api/posts/?format=json&page=${page}`
+            `http://127.0.0.1:8000/api/posts/?page=${page}`
           )
           .then(res => {
             
@@ -83,6 +83,7 @@ class Content extends React.Component {
                     <span>Recent</span>
                 </section>
 
+                <section className="message_section">{this.props.message}</section>
                 
 
                 <section className="feed_container" style={{minHeight:"500px"}}>

@@ -57,6 +57,7 @@ urlpatterns = [
     path('api/login/', MyObtainTokenPairView.as_view(), name='login_token_obtain_pair'),
     path('api/login/refresh/', TokenRefreshView.as_view(), name='login_token_refresh'),
     path('api/register/', RegisterView.as_view(), name='auth_register'),
+    # path("/create_random_users", createRandomUsers, name="create_random_users"),
     
     # include routers for post groups and comments
     path('api/', include(router.urls)),

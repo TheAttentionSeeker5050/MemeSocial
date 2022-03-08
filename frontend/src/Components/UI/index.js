@@ -16,18 +16,22 @@ import {login_api} from "../../Api/api_login"
 // import {LoginContext, login_modal} from "../../Contexts/login_modal"
 
 
-const element = React.createElement
+
 
 class UI extends React.Component {
 
     constructor(props) {
         super(props);
         this.showLoginModal = this.showLoginModal.bind(this)
+        // this.attemptLogin = this.attemptLogin.bind(this)
+        // this.success = this.success.bind(this)
+
         this.state = {
             loginModalActive:false,
             username:"",
             password:"",
-            message:""
+            message:"",
+            loggedIn:false
         }
         
     }
@@ -36,23 +40,30 @@ class UI extends React.Component {
     success = async (text) => {
         console.log("user is authenticated")
         await localStorage.setItem("userToken", text.access)
-        window.location = ""
+        await localStorage.setItem("username", text)
+
+        window.location = "/"
     }
 
     attemptLogin = async (element) => {
-        element.preventDefault()
+        // element.preventDefault()
         console.log("login in with", this.state.username)
         await login_api(this.state.username, this.state.password, this.success, (text) => {
-            this.setState({message: text})
+            this.setState({message: text.detail})
+            localStorage.setItem("error", text.detail)
         })
     }
 
-    handleUsernameInput = event => this.setState({username: event.target.value})
+    handleUsernameInput = event => {
+        this.setState({username: event.target.value})
+        console.log(this.state.username)
+    }
     handlePasswordInput = event => this.setState({password: event.target.value})
 
 
     showLoginModal() {
         this.setState({loginModalActive: true})
+
         // console.log(this.state.loginModalActive)
         console.log("login modal active")
 
@@ -76,14 +87,15 @@ class UI extends React.Component {
 
             <div className="App">
                 <Header showLogin={this.showLoginModal}/>
-                <Content/>
+                <Content message={this.state.message}/>
                 <LoginModalComponent 
                     show={this.state.loginModalActive} 
                     username={this.state.username} 
                     password={this.state.password} 
                     submitFunction={this.attemptLogin} 
                     onUsernameInput={this.handleUsernameInput}
-                    onPasswordInput={this.handlePasswordInput}/>
+                    onPasswordInput={this.handlePasswordInput}
+                    />
                 
             </div>
         )
