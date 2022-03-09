@@ -1,18 +1,18 @@
 from faker import Faker
 
 #import db
-from users.models import Profile
+from django.contrib.auth.models import User
 
 fake = Faker()
 Faker.seed(0)
 
-for i in range(0-100):
+for i in range(0,100):
     random_profile = fake.simple_profile()
-    username = random_profile.username
-    email = random_profile.email
-    password = random_profile.ssn
+    username = random_profile["username"]
+    email = random_profile["mail"]
+    password = random_profile["username"]
 
-    username_entry = Profile.objects.create_user(username, password=password, email=email)
+    username_entry = User.objects.create(username=username, password=password, email=email)
         
     username_entry.save()
 

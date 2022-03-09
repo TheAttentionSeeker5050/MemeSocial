@@ -19,38 +19,31 @@ class Content extends React.Component {
             page:1,
             posts: [],
             loading:false,
-            // show_login_modal:false,
-            // show_register_modal:false,
-            // show_menu_modal: false
         }
-        // this.showLoginModal = this.showLoginModal.bind(this)
-        // this.hideLoginModal = this.hideLoginModal.bind(this)
 
 
+        // infinite scroll component logic, check every time you scroll
         window.onscroll = debounce(() => {
             const {
                 getPosts
             } = this;
+            // if it has reached the bottom of the page, get more posts given the next page
+            // which is stored as a state variable
             if (window.innerHeight + document.documentElement.scrollTop === document.documentElement.offsetHeight) {
                 
                 this.getPosts(this.state.page);
               }
+            //   add some timing to make the wait slimmer
             }, 200);
         }
     
-    // showLoginModal() {
-    //     this.setState({show_login_modal: true})
-    // }
-
-    // hideLoginModal() {
-    //     this.setState({show_login_modal: false})
-    // }
-
+    // at page reload give the first n posts
     componentDidMount() {
         this.getPosts()
     }
+
+    // get n more posts
     getPosts(page=1) {
-        // this.setState({ loading: true });
         axios
           .get(
             `http://127.0.0.1:8000/api/posts/?page=${page}`
