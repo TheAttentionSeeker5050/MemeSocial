@@ -6,6 +6,7 @@ import ReactDOM from 'react-dom'
 // // import the contexts
 // import {LoginContext} from "../../../Contexts/login_modal"
 
+import {Link} from "react-router-dom"
 
 class LoginModalComponent extends React.Component {
 
@@ -38,6 +39,8 @@ class LoginModalComponent extends React.Component {
                   value={this.props.password}
                   onChange={this.props.onPasswordInput}
                   />
+
+                  <span>Not an user yet? <Link to="/register">Register</Link></span>
 
                   <button type="submit" onSubmit={this.props.submitFunction}>Submit</button>
               </form>

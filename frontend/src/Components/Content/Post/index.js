@@ -6,20 +6,8 @@ class Post extends React.Component {
 
     constructor(props) {
         super(props)
-        // this.state = {
-        //     usernames = []
-        // }
-
     }
 
-    // getUsername(pk) {
-    //     fetch(`http://127.0.0.1:8000/api/user/${pk}`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             this.setState({usernames})
-    //         })
-    //         .catch(error => console.log(error))
-    // }
 
     
 

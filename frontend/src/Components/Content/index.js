@@ -46,7 +46,7 @@ class Content extends React.Component {
     getPosts(page=1) {
         axios
           .get(
-            `http://127.0.0.1:8000/api/posts/?page=${page}`
+            `http://127.0.0.1:8000/api/posts/?page=${page}&format=json`
           )
           .then(res => {
             

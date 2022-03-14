@@ -50,3 +50,20 @@
 .login_form h2, .login_form label{
     color: var(--orange-brand-2);
 }
+
+.login_form button {
+    background-color: var(--orange-brand-2);
+    border-radius: 8px;
+    margin: 15px;
+    padding: 5px 8px;
+    border: 2px solid white;
+    font-size:1.2rem;
+
+    color: white;
+
+}
+
+.login_form span a {
+    color: var(--orange-brand);
+    text-decoration: none;
+}

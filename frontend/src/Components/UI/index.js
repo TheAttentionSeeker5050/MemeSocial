@@ -6,11 +6,13 @@ import {Header} from "../Header"
 import {Content} from "../Content"
 import {LoginModalComponent} from "../Modals/Login"
 
-import { Link } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 
 // import api call
 import {login_api} from "../../Api/api_login"
+
+// import the dom manipulation methods
 
 // import the contexts
 // import {LoginContext, login_modal} from "../../Contexts/login_modal"
@@ -56,7 +58,7 @@ class UI extends React.Component {
 
     handleUsernameInput = event => {
         this.setState({username: event.target.value})
-        console.log(this.state.username)
+
     }
     handlePasswordInput = event => this.setState({password: event.target.value})
 
@@ -86,6 +88,8 @@ class UI extends React.Component {
         return (
 
             <div className="App">
+                
+
                 <Header showLogin={this.showLoginModal}/>
                 <Content message={this.state.message}/>
                 <LoginModalComponent 
@@ -95,7 +99,8 @@ class UI extends React.Component {
                     submitFunction={this.attemptLogin} 
                     onUsernameInput={this.handleUsernameInput}
                     onPasswordInput={this.handlePasswordInput}
-                    />
+                />
+                
                 
             </div>
         )
