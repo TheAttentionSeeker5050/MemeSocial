@@ -34,7 +34,7 @@ from rest_framework_simplejwt.views import (
 
 # declare routers
 router = DefaultRouter()
-router.register(r'posts', PostAPIViewset, basename='Posts')
+router.register(r'posts', PostAPIViewset, basename='posts')
 router.register(r'groups', GroupAPIViewset, basename='Groups')
 router.register(r'comments', CommentAPIViewset, basename='Comments')
 router.register(r'subcomments', SubCommentAPIViewset, basename='SubComments')
@@ -60,7 +60,7 @@ urlpatterns = [
     # path("/create_random_users", createRandomUsers, name="create_random_users"),
     
     # include routers for post groups and comments
-    path('api/', include(router.urls)),
+    path('api/', include((router.urls, "rest_api"))),
     # path('upload/', MemeImageAPIViewset.as_view, name='upload'),
 
 ]  + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
