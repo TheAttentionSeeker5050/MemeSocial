@@ -1,16 +1,11 @@
 # React-Django Meme Page
 
-<<<<<<< HEAD
 This is a social media app for browsing and commenting memes. It is intended to let you post new memes, comment and reply to comments, upvote/downvote, join groups and follow other users, posts comments, and groups, receive push notifications. It should also have a keyword moderation algorithm as well as trackers, to track user info regarding reach, net growth, sentiment, engagement and views, for the moment. Additionally, we should implement a sponsor component on the app and server, and track on the user interaction with it. 
-=======
-This is a social media app for browsing and commenting memes
->>>>>>> 113d6d98c02900f3f0ec8dabbd1601b506ae52e4
 
 # Version 0.9.1
 
 ## Main Features
 
-<<<<<<< HEAD
 - A feed to browse memes
 - Django REST API implementation
 - Frontent/Backend app split, with client side rendering
@@ -45,5 +40,3 @@ This is a social media app for browsing and commenting memes
 - Anything other than mobile phone result on a bad user experience
 - There should be others but are invisible at this moment
 
-=======
->>>>>>> 113d6d98c02900f3f0ec8dabbd1601b506ae52e4
