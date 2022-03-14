@@ -30,6 +30,9 @@ class Post(models.Model):
     class Meta:
         ordering = ["-date_posted"]
     
+    def get_absolute_url(self):
+        return "/posts/%i/" % self.id
+
     def __str__(self):
         return self.title
     

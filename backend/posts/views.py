@@ -28,7 +28,8 @@ class PostAPIViewset(ModelViewSet):
     
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    # pagination_class = StandardResultsSetPagination
+    
+    #pagination_class = StandardResultsSetPagination
     
     @action(detail=True, methods=['post'])
     def upload_meme(request):
